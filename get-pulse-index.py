@@ -1,7 +1,22 @@
 #!/usr/bin/python 
 
+# This file is part of gst-record-webcam.
+#
+#   gst-record-webcam is free software: you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation, either version 3 of the License, or
+#   (at your option) any later version.
+#
+#   gst-record-webcam is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with gst-record-webcam.  If not, see <https://www.gnu.org/licenses/>.
+
 # This program is called like this
-# pacmd list-sources | ./pacmd-parse.py C270 
+# pacmd list-sources | ./get-pulse-index.py C270 
 # it will return the pulse audio index value for the microphone on the C270 
 # webcam
 
