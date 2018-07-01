@@ -48,7 +48,7 @@ echo "AUDIO_QUEUE_NS:   $AUDIO_QUEUE_NS"
 gst-launch-1.0 -v v4l2src device=$MAIN_CAM_VIDEO ! video/x-raw,width=1920,height=1080,framerate=30/1 ! tee name=t \
 	t. ! queue ! videoconvert ! videoscale ! video/x-raw,height=480 ! timeoverlay ! queue leaky=upstream ! autovideosink sync=false \
 	t. ! queue ! vaapih264enc ! h264parse ! queue max-size-buffers=0 max-size-bytes=0 max-size-time=1000000000 ! mux. \
-	pulsesrc device=$MAIN_CAM_AUDIO ! audioconvert ! audio/x-raw, rate=$AUDIO_RECORD_RATE ! queue max-size-buffers=0 max-size-bytes=0 max-size-time=$AUDIO_QUEUE_NS ! avenc_aac ! queue ! mux. \
+	pulsesrc device=$MAIN_CAM_AUDIO ! audioconvert ! audio/x-raw, rate=$AUDIO_RECORD_RATE ! queue max-size-buffers=0 max-size-bytes=0 max-size-time=$AUDIO_QUEUE_NS ! avenc_aac ! aacparse ! queue ! mux. \
 	mpegtsmux name=mux ! queue max-size-buffers=0 max-size-bytes=0 max-size-time=0 ! filesink location=$OUTPUT_FILE_NAME
 
 
