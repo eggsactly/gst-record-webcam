@@ -52,5 +52,6 @@ gst-launch-1.0 -v \
 	t. ! queue ! videoscale ! video/x-raw,height=480 ! timeoverlay ! queue leaky=upstream ! autovideosink sync=false \
 	t. ! queue ! vaapih264enc ! h264parse ! queue max-size-buffers=0 max-size-bytes=0 max-size-time=1000000000 ! mux. \
 	pulsesrc device=$MAIN_CAM_AUDIO ! audioconvert ! audio/x-raw, rate=$AUDIO_RECORD_RATE ! queue max-size-buffers=0 max-size-bytes=0 max-size-time=$AUDIO_QUEUE_NS ! avenc_aac ! aacparse ! queue ! mux. \
+	pulsesrc device=$SECOND_CAM_AUDIO ! audioconvert ! audio/x-raw, rate=$AUDIO_RECORD_RATE ! queue max-size-buffers=0 max-size-bytes=0 max-size-time=$AUDIO_QUEUE_NS ! avenc_aac ! aacparse ! queue ! mux. \
 	mpegtsmux name=mux ! queue max-size-buffers=0 max-size-bytes=0 max-size-time=0 ! filesink location=$OUTPUT_FILE_NAME
 
